@@ -35,7 +35,7 @@ public static void crearTABLA() {
 
          stmt = c.createStatement();
          String sql = "CREATE TABLE PERSONA " +
-                        "(p_id INT PRIMARY KEY   NOT NULL," +
+                        "(p_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                         " p_nombre       TEXT    NOT NULL)"; 
          stmt.executeUpdate(sql);
          stmt.close();
@@ -89,17 +89,11 @@ public static void consultarBD() {
       
       while ( rs.next() ) {
          int id = rs.getInt("p_id");
-         String  nombre = rs.getString("p_nombre");
-         String  apellido = rs.getString("p_apellido");
-         int edad  = rs.getInt("p_edad");
-         String cedula = rs.getString("p_cedula");
+         String  nombre = rs.getString("p_nombre");         
 
          
          System.out.println( "ID = " + id );
-         System.out.println( "NOMBRE = " + nombre );
-         System.out.println( "APELLIDO = " + apellido );
-         System.out.println( "EDAD = " + edad );
-         System.out.println( "CEDULA = " + cedula );
+         System.out.println( "NOMBRE = " + nombre );         
          System.out.println();
       }
       rs.close();

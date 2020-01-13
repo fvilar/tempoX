@@ -9,14 +9,18 @@ package tempox;
  *
  * @author darwin
  */
+
 public class ventanaZ2 extends javax.swing.JDialog {
 
+    private static perJDBClite db;
     /**
      * Creates new form ventanaZ2
      */
     public ventanaZ2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         db.consultarBD();
+        
     }
 
     /**
@@ -36,6 +40,11 @@ public class ventanaZ2 extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("aceptarH2");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("salirH2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -81,10 +90,15 @@ public class ventanaZ2 extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        db = new perJDBClite();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
