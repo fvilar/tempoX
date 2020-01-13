@@ -47,10 +47,10 @@ public static void crearTABLA() {
       System.out.println("Table created successfully");
    }
 
-public static void insertarBD(String nombre) {
+public static Boolean insertarBD(String nombre) {
       Connection c = null;
       Statement stmt = null;
-      
+      Boolean res = false;
       try {
          Class.forName("org.sqlite.JDBC");
          c = DriverManager.getConnection("jdbc:sqlite:"+nameBD);
@@ -64,12 +64,14 @@ public static void insertarBD(String nombre) {
          stmt.close();
          c.commit();
          c.close();
+         res = true;
 
       } catch ( Exception e ) {
          System.err.println( e.getClass().getName() + ": " + e.getMessage() );
          System.exit(0);
       }
       System.out.println("Records created successfully");
+      return res;
    }
 
   
