@@ -74,10 +74,11 @@ public static void insertarBD(String nombre) {
 
   
 
-public static void consultarBD() {
+public static String consultarBD() {
 
    Connection c = null;
    Statement stmt = null;
+   String res = "ID\tNOMBRE\n\n";   
    try {
       Class.forName("org.sqlite.JDBC");
       c = DriverManager.getConnection("jdbc:sqlite:"+nameBD);
@@ -88,14 +89,10 @@ public static void consultarBD() {
       ResultSet rs = stmt.executeQuery( "SELECT * FROM PERSONA;" );
       
       while ( rs.next() ) {
-         int id = rs.getInt("p_id");
-         String  nombre = rs.getString("p_nombre");         
-
-         
-         System.out.println( "ID = " + id );
-         System.out.println( "NOMBRE = " + nombre );         
-         System.out.println();
-      }
+         res += String.valueOf(rs.getInt("p_id"))+"\t";
+         res += rs.getString("p_nombre");         
+         res +="\n";                 
+      }            
       rs.close();
       stmt.close();
       c.close();
@@ -104,8 +101,8 @@ public static void consultarBD() {
       System.exit(0);
    }
    System.out.println("Operation done successfully");
-  }
-
+   return res;
+  }   
 }
 
 

@@ -19,7 +19,8 @@ public class ventanaZ2 extends javax.swing.JDialog {
     public ventanaZ2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         db.consultarBD();
+        String res = db.consultarBD();
+        jTextArea1.setText(res);
         
     }
 
