@@ -17,6 +17,7 @@ public class TempoX {
     public static void main(String[] args) {
         marcoZ frmMZ = new marcoZ();
                      frmMZ.show();
+        perJDBClite c = new perJDBClite();
     }
     
 }
