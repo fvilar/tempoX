@@ -6,15 +6,11 @@ public class perJDBClite{
    private static String nameBD="baseZ.db";
 
    public static void main( String args[] ) {
-      
-      conectarBD(nameBD);
-      crearTABLA(nameBD);
-      insertarBD(nameBD);
-      consultarBD(nameBD);
+                        
    }
 
 
-public static void conectarBD(String nameBD) {
+public static void conectarBD() {
       Connection c = null;
       
       try {
@@ -28,7 +24,7 @@ public static void conectarBD(String nameBD) {
    }
     
 
-public static void crearTABLA(String nameBD) {
+public static void crearTABLA() {
       Connection c = null;
       Statement stmt = null;
       
@@ -40,10 +36,7 @@ public static void crearTABLA(String nameBD) {
          stmt = c.createStatement();
          String sql = "CREATE TABLE PERSONA " +
                         "(p_id INT PRIMARY KEY   NOT NULL," +
-                        " p_nombre       TEXT    NOT NULL," + 
-                        " p_apellido     TEXT    NOT NULL," + 
-                        " p_edad         INT     NOT NULL," + 
-                        " p_cedula       TEXT)"; 
+                        " p_nombre       TEXT    NOT NULL)"; 
          stmt.executeUpdate(sql);
          stmt.close();
          c.close();
@@ -54,7 +47,7 @@ public static void crearTABLA(String nameBD) {
       System.out.println("Table created successfully");
    }
 
-public static void insertarBD(String nameBD) {
+public static void insertarBD(String nombre) {
       Connection c = null;
       Statement stmt = null;
       
@@ -65,66 +58,9 @@ public static void insertarBD(String nameBD) {
          System.out.println("Opened database successfully-3");
 
          stmt = c.createStatement();
-         String sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                        "VALUES (1, 'Paul', 'California', 32, '0911147999' );"; 
+         String sql = "INSERT INTO PERSONA (p_nombre) VALUES('"+nombre+"')"; 
          stmt.executeUpdate(sql);
-
-         sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (2, 'Allen', 'Texas', 25, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-         sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (3, 'Teddy', 'Norway', 23, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-         sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (4, 'Paca', 'Garte', 23, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-	 
-         sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (5, 'Ana Lisa', 'Melchoto', 12, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-	
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (6, 'Rosa', 'Melpito', 43, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (7, 'Monica', 'Galindo', 63, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (8, 'Lali', 'Cuadora', 21, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (9, 'ana', 'Tomia', 18, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (10, 'Mary', 'Quita', 19, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (11, 'Flor D.', 'Turra', 26, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (12, 'German', 'Teca', 41, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (13, 'Evelin', 'Munda', 35, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (14, 'Roque', 'Joso', 27, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-	 
-	 sql = "INSERT INTO PERSONA (p_id,p_nombre,p_apellido,p_edad,p_cedula) " +
-                  "VALUES (15, 'Darwin', 'Patino', 51, '0911147999' );"; 
-         stmt.executeUpdate(sql);
-
+         
          stmt.close();
          c.commit();
          c.close();
@@ -138,7 +74,7 @@ public static void insertarBD(String nameBD) {
 
   
 
-public static void consultarBD(String nameBD) {
+public static void consultarBD() {
 
    Connection c = null;
    Statement stmt = null;
